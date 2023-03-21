@@ -1,0 +1,43 @@
+CREATE TABLE Azango_Liquors (id INTEGER, name TEXT, spirit TEXT, quantity INTEGER, price REAL);
+
+INSERT INTO Azango_Liquors VALUES (1, 'Jose Cuervo', 'Tequila', 32, 24.99);
+INSERT INTO Azango_Liquors VALUES (2, 'Captain Morgan', 'Rum', 24, 19.99);
+INSERT INTO Azango_Liquors VALUES (3, 'Bombay', 'Gin', 19, 29.99);
+INSERT INTO Azango_Liquors VALUES (4, 'Smirnoff', 'Vodka', 36, 14.99);
+INSERT INTO Azango_Liquors VALUES (5, 'Ciroc', 'Vodka', 30, 29.99);
+INSERT INTO Azango_Liquors VALUES (6, 'Seagrams', 'Gin', 12, 19.99);
+INSERT INTO Azango_Liquors VALUES (7, 'Patron', 'Tequila', 9, 39.99);
+INSERT INTO Azango_Liquors VALUES (8, 'Parrot Bay', 'Rum', 5, 9.99);
+INSERT INTO Azango_Liquors VALUES (9, 'Jack Daniels', 'Whiskey', 20, 24.99);
+INSERT INTO Azango_Liquors VALUES (10, 'Crown Royal', 'Whiskey', 11, 29.99);
+INSERT INTO Azango_Liquors VALUES (11, 'Absolut', 'Vodka', 12, 19.99);
+INSERT INTO Azango_Liquors VALUES (12, 'Johnnie Walker', 'Whiskey', 6, 39.99);
+INSERT INTO Azango_Liquors VALUES (13, 'Bacardi', 'Rum', 22, 19.99);
+INSERT INTO Azango_Liquors VALUES (14, 'Grey Goose', 'Vodka', 9, 39.99);
+INSERT INTO Azango_Liquors VALUES (15, 'Tanqueray', 'Gin', 10, 24.99);
+INSERT INTO Azango_Liquors VALUES (16, 'Jim Beam', 'Whiskey', 23, 21.99);
+
+SELECT spirit, price
+FROM Azango_Liquors 
+ORDER BY price;
+
+--what is the average price of rum?
+
+SELECT AVG(price)
+FROM Azango_Liquors
+WHERE spirit = 'Rum';
+
+--which spirit has the highest quantity?
+
+SELECT SUM(quantity) AS 'Total', spirit
+FROM Azango_Liquors 
+GROUP BY category
+ORDER BY SUM(quantity) DESC;
+
+
+--On average, what's the most expensive spirit?
+
+SELECT AVG(price) AS 'average_price', spirit
+FROM Azango_Liquors
+GROUP BY spirit
+ORDER BY average_price DESC;
