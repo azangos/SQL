@@ -1,0 +1,19 @@
+SELECT * FROM BIT_DB.Spotifydata;
+
+--Who are the top 5 artists based on popularity?
+SELECT Spotifydata.artist_name, ROUND(AVG(Spotifydata.popularity), 2) as Average_Popularity FROM BIT_DB.Spotifydata
+GROUP BY Spotifydata.artist_name
+ORDER BY ROUND(AVG(Spotifydata.popularity), 2) DESC
+LIMIT 5;
+
+--Which artists have the most songs?
+SELECT Spotifydata.artist_name, COUNT (Spotifydata.track_name) as Number_of_Songs FROM BIT_DB.Spotifydata
+GROUP BY Spotifydata.artist_name
+ORDER BY COUNT (Spotifydata.track_name) DESC;
+
+--Which artists with at least 2 songs, are the most popular?
+SELECT Spotifydata.artist_name, COUNT (Spotifydata.track_name) as Number_of_Songs, ROUND(AVG(Spotifydata.popularity), 2) as Average_Popularity FROM BIT_DB.Spotifydata
+GROUP BY Spotifydata.artist_name
+HAVING COUNT (Spotifydata.track_name) >1
+ORDER BY ROUND(AVG(Spotifydata.popularity), 2) DESC
+;
